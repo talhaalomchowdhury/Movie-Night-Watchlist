@@ -1,7 +1,5 @@
-import { createElement } from "react";
 
-
-export default function MovieCard({ movie }) {
+export default function MovieCard({ movie, onToggle }) {
     let status = ""
     if(movie.watched) {
         status = "Watched"
@@ -15,6 +13,19 @@ export default function MovieCard({ movie }) {
         <h3>{movie.title}</h3>
         <p> {movie.genre} {movie.year}</p>
         <p> Status: {status} </p>
+
+        {/*  */}
+        <button onClick= {() => onToggle(movie.id)}> 
+            Click me
+        </button>
+
+
+
+
+
+
+
+
     </div>
     )
 }
