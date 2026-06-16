@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './App.css'
 import MovieCard from './MovieCard.jsx'
 
+
+
 const initialMovies = [
   { id: 1, title: "The Matrix",                         genre: "Sci-Fi",    year: 1999, watched: false },
   { id: 2, title: "Parasite",                           genre: "Thriller",  year: 2019, watched: false },
@@ -13,20 +15,29 @@ const initialMovies = [
 
 
 
-
+// main
 export default function App() {
-  // state
+
+
+
+
+
+
+
+  // state, initial value
   const [movies, setMovies] = useState(initialMovies);
 
   const toggleWatched = (id) => {
-    const updatedMovies = movies.map((movie) => {
-      
+  const updatedMovies = movies.map((movie) => {
+    
       if(movie.id === id) {
         //make new object and store value
         return {...movie, watched: !movie.watched};
       }
       return movie;
     });
+
+    //change movie
     setMovies(updatedMovies)
   }
 
@@ -34,14 +45,30 @@ export default function App() {
 
 
 
+const totalMovies = movies.length
+const totalWatched = movies.filter(movie => {
+  return movie.watched === true
+})
+const notWatched = movies.filter(movie=> {
+   return movie.watched === false
+   })
+
+
 
 
   return (
     <div>
+
       <h1> Movie Night</h1>
+      <p> Total Movies: {totalMovies} </p>
+      <p> Total Movies Watched: {totalWatched.length} </p>
+      <p> Total Movies Unwatched: {notWatched.length}</p>
+
       {movies.map((movie) => (
 
-        <MovieCard 
+
+        //reference from moviecard.jsx function
+        <MovieCard
         key= {movie.id} 
         movie ={movie}
         onToggle= {toggleWatched}

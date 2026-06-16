@@ -1,4 +1,7 @@
 
+
+
+
 export default function MovieCard({ movie, onToggle }) {
     let status = ""
     if(movie.watched) {
@@ -9,12 +12,13 @@ export default function MovieCard({ movie, onToggle }) {
 
 
     return (
+
      <div key= {movie.id}>
         <h3>{movie.title}</h3>
         <p> {movie.genre} {movie.year}</p>
         <p> Status: {status} </p>
 
-        {/*  */}
+        {/*movie.id ->   */}
         <button onClick= {() => onToggle(movie.id)}> 
             Click me
         </button>
